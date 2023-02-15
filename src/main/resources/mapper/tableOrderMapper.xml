@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.example.tableorder.mapper.TableOrderMapper">
+	
+	<select id='tabMenu' resultType='com.example.tableorder.vo.TabCodeVO' parameterType="map">
+	
+		select * 
+		from tabcode
+		where comid = #{comId} 
+		and tabuse = #{tabUse}
+		and pos = #{pos}
+			 	
+	</select>
+	
+	<select id='itemMenu' resultType='com.example.tableorder.vo.ItemVO' parameterType="map">
+	
+		select * 
+		from tktitems
+		where comid = #{comId} 
+		and pcode = #{pCode}
+		and pos = #{pos}
+			 	
+	</select>
+	
+</mapper>

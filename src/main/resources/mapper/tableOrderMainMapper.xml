@@ -5,19 +5,19 @@
         
 <mapper namespace="com.example.tableorder.mapper.TableOrderMainMapper">
 	
-	<select id='tabMenu' resultType='com.example.tableorder.vo.main.MainTabCodeVO' parameterType="map">
+	<select id='tabMenu' resultType='com.example.tableorder.vo.main.MainTabCodeVO' parameterType="Map">
 	
 		select * 
-		from tabcode
-		where comid = #{comId} 
-		and tabuse = #{tabUse}
-		and pos = #{pos}
+		from TabCode
+		where ComId = #{comId} 
+		and TabUse = #{tabUse}
+		and Pos = #{pos}
 			 	
 	</select>
 	
-	<select id='itemMenu' resultType='com.example.tableorder.vo.main.MainItemVO' parameterType="map">
+	<select id='itemMenu' resultType='com.example.tableorder.vo.main.MainItemVO' parameterType="Map">
 	
-		select * 
+		select comId, pName, itemName1, itemName2, pos, pCode, tabNo, itemCode, bColor, tax, subUse, sex, area, stockUse, uPrice, stock 
 		from tktitems
 		where comid = #{comId} 
 		and pcode = #{pCode}

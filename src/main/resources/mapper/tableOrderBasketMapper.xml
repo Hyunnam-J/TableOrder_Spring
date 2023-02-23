@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        
+<mapper namespace="com.example.tableorder.mapper.TableOrderBasketMapper">
+	
+	<select id='checkTMenuSeq' resultType='Integer'>
+	
+		select 
+			top 1
+			TMenuSeq
+		from 
+			TableDetail
+		where 
+			TNum = #{tNum}
+		order by 1 desc
+	
+	</select>
+	
+	<select id='checkOrderNo' resultType='Integer'>
+	
+		select 
+			top 1
+			OrderNo
+		from 
+			TableDetail
+		order by 1 desc
+	
+	</select>
+	
+	<insert id='order' parameterType='map'>
+	
+	insert into TableDetail( Tnum, TMenuSeq, TabNo, ItemNo, Pname, ItemName1, ItemName2, Pcode,
+							ItemCode, Aunit, Anum, Aamt, Tax, Sex, Area, Stock, StockUse, SubUse, 
+							SubTotAmt, OPrice, OrderNo )
+	values ( #{tNum}, #{tMenuSeq}, #{tabNo}, #{itemNo}, #{pName}, #{itemName1}, #{itemName2}, #{pCode},
+				#{itemCode}, #{uPrice}, #{quantity}, #{aAmt}, #{tax}, #{sex}, #{area}, #{stock}, #{stockUse}, #{subUse},
+				#{subTotAmt}, #{oPrice}, #{orderNo} )
+	
+	</insert>
+</mapper>

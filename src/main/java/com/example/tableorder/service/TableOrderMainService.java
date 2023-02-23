@@ -24,7 +24,5 @@ public class TableOrderMainService {
 		return tableOrderMainMapper.itemMenu(comId, pCode, pos);
 		
 	}
-	
-	
 
 }

@@ -2,16 +2,12 @@ package com.example.tableorder.service;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.tableorder.mapper.TableOrderBasketMapper;
-import com.example.tableorder.mapper.TableOrderMainMapper;
 import com.example.tableorder.vo.basket.BasketVO;
-import com.example.tableorder.vo.main.MainItemVO;
-import com.example.tableorder.vo.main.MainTabCodeVO;
 
 @Service
 @Transactional

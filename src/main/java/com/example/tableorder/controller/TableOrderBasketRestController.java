@@ -1,6 +1,5 @@
 package com.example.tableorder.controller;
 
-
 import java.lang.reflect.Type;
 import java.util.List;
 
@@ -20,7 +19,7 @@ import com.google.gson.reflect.TypeToken;
 
 @RestController
 @RequestMapping("api/basket")
-public class TableOrderBasketController {
+public class TableOrderBasketRestController {
 	@Autowired TableOrderBasketService tableOrderBasketService;
 	
 	@PostMapping(value = "order")

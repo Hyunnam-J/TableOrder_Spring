@@ -20,13 +20,32 @@ public class TableOrderMainRestController {
 
 	@GetMapping(path = "tabMenu")
 	public String tabMenu(@Param("comId") String comId, @Param("tabUse") String tabUse, @Param("pos") String pos) {
-		List<MainTabCodeVO> tabList = tableOrderMainService.tabMenu(comId, tabUse, pos);
-		return new Gson().toJson(tabList);
+		
+		Resp<MainTabCodeVO> resp;
+		
+		try {
+			List<MainTabCodeVO> tabList = tableOrderMainService.tabMenu(comId, tabUse, pos);
+			resp = new Resp<>(0, "success", tabList);
+		} catch (Exception e) {
+			resp = new Resp<>(-1, "fail : "+e, null);
+		}
+		
+		return new Gson().toJson(resp);
 	}
 		
 	@GetMapping(path = "itemMenu")
 	public String itemMenu(@Param("comId") String comId, @Param("pCode") String pCode, @Param("pos") String pos) {
-		List<MainItemVO> itemList = tableOrderMainService.itemMenu(comId, pCode, pos);
-		return new Gson().toJson(itemList);
+		
+		Resp<MainItemVO> resp;
+		
+		try {
+			List<MainItemVO> itemList = tableOrderMainService.itemMenu(comId, pCode, pos);
+			resp = new Resp<>(0, "success", itemList);
+
+		} catch (Exception e) {
+			resp = new Resp<>(-1, "fail : "+e, null);
+		}
+		
+		return new Gson().toJson(resp);
 	}
 }

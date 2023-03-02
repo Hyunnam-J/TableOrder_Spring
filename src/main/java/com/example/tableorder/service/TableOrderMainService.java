@@ -16,13 +16,25 @@ import com.example.tableorder.vo.main.MainTabCodeVO;
 public class TableOrderMainService {
 	@Autowired TableOrderMainMapper tableOrderMainMapper;
 		
-	public List<MainTabCodeVO> tabMenu(@Param("comId") String comId, @Param("tabUse") String tabUse, @Param("pos") String pos) {
-		return tableOrderMainMapper.tabMenu(comId, tabUse, pos);
+	public List<MainTabCodeVO> tabMenu(@Param("comId") String comId, @Param("tabUse") String tabUse, @Param("pos") String pos) throws Exception {
+		
+		List<MainTabCodeVO> tabList = tableOrderMainMapper.tabMenu(comId, tabUse, pos);
+		
+		if(tabList.size()==0) {
+			throw new Exception("관련 데이터가 없습니다.");
+		}
+		
+		return tabList;
 	}
 	
-	public List<MainItemVO> itemMenu(@Param("comId") String comId, @Param("pCode") String pCode, @Param("pos") String pos){
-		return tableOrderMainMapper.itemMenu(comId, pCode, pos);
+	public List<MainItemVO> itemMenu(@Param("comId") String comId, @Param("pCode") String pCode, @Param("pos") String pos) throws Exception{
 		
+		List<MainItemVO> itemList = tableOrderMainMapper.itemMenu(comId, pCode, pos);
+		
+		if(itemList.size()==0) {
+			throw new Exception("관련 데이터가 없습니다.");
+		}
+		
+		return itemList;
 	}
-
 }

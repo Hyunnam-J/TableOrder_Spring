@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.tableorder.service.TableOrderBasketService;
 import com.example.tableorder.vo.basket.BasketVO;
 import com.example.tableorder.vo.basket.SendOrderVO;
+import com.example.tableorder.vo.basket.SendPayVO;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -39,6 +40,18 @@ public class TableOrderBasketRestController {
 			
 		}
 		return result;
+	}
+	
+	@PostMapping(value = "pay")
+	public String pay(@RequestBody String sendPayVO) {
+		
+		SendPayVO vo = new Gson().fromJson(sendPayVO, (Type) new TypeToken<SendPayVO>() {}.getType());
+		List<BasketVO> basketList = vo.getBasketList();
+		int tNum = vo.gettNum();
+		
+		tableOrderBasketService.pay(basketList, tNum);
+		
+		return "";
 	}
 }	//class
 

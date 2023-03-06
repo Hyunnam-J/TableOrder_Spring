@@ -1,6 +1,8 @@
 package com.example.tableorder.mapper;
 
 
+import java.util.Date;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
@@ -11,7 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface TableOrderBasketMapper {
 
 	public int checkTMenuSeq(int tNum);
-	public int checkOrderNo();
+	public int checkTableDetailOrderNo();
 	public int order(
 			
 			@Param("tNum") int tNum,
@@ -35,6 +37,63 @@ public interface TableOrderBasketMapper {
 			@Param("subTotAmt") int subTotAmt, 
 			@Param("oPrice") int oPrice,
 			@Param("orderNo") String orderNo
+			
+			);
+	
+	
+	
+	
+	
+	
+	public int checkSalSeq(@Param("salDate") String salDate);
+	
+	public int checkTmtktDetailOrderNo(@Param("salDate") String salDate);
+	
+	public String checkTmtktDetailTcode(@Param("salDate") String salDate, @Param("pos") String pos);
+	
+	public int insertTmtktDetail(
+			
+			@Param("comId") String comId,
+			@Param("salDate") String salDate,
+			@Param("salPos") String salPos,
+			@Param("salSeq") int salSeq,
+			@Param("tCode") String tCode,
+			@Param("tkdtSeq") int tkdtSeq,
+			@Param("tkdtTot") int tkdtTot,
+			@Param("trDate") String trDate,
+			@Param("trTime") String trTime,
+			@Param("chCode") String chCode,
+			@Param("itemCode") String itemCode,
+			@Param("pCode") String pCode,
+			@Param("aUnit") int aUnit,
+			@Param("aNum") int aNum,
+			@Param("aAmt") int aAmt,
+			@Param("aPayment") String aPayment,
+			@Param("groupSel") String groupSel,
+			@Param("rePrint") int rePrint,
+			@Param("aReturn") String aReturn,
+			@Param("rtnSalDt") String rtnSalDt,
+			@Param("rtnDate") String rtnDate,
+			@Param("rtnTime") String rtnTime,
+			@Param("rtnCh") String rtnCh,
+			@Param("rtnPos") String rtnPos,
+			@Param("servTrans") String servTrans,
+			@Param("transDate") String transDate,
+			@Param("transTime") String transTime,
+			@Param("rtnSvrSend") String rtnSvrSend,
+			@Param("timeSeq") String timeSeq,
+			@Param("bsend") String bsend,
+			@Param("btReturn") String btReturn,
+			@Param("bt_Orderno") String bt_Orderno,
+			@Param("refundrs") String refundrs,
+			@Param("agreeNo") String agreeNo,
+			@Param("rDate") Date rDate,
+			@Param("uDate") Date uDate,
+			@Param("lockNum") String lockNum,
+			@Param("orderNo") String orderNo,
+			@Param("subUse") String subUse,
+			@Param("baseUnit") int baseUnit,
+			@Param("tNum") int tNum
 			
 			);
 }

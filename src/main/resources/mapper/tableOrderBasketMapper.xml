@@ -18,7 +18,7 @@
 	
 	</select>
 	
-	<select id='checkOrderNo' resultType='Integer'>
+	<select id='checkTableDetailOrderNo' resultType='Integer'>
 	
 		select 
 			top 1
@@ -37,6 +37,61 @@
 	values ( #{tNum}, #{tMenuSeq}, #{tabNo}, #{itemNo}, #{pName}, #{itemName1}, #{itemName2}, #{pCode},
 				#{itemCode}, #{uPrice}, #{quantity}, #{aAmt}, #{tax}, #{sex}, #{area}, #{stock}, #{stockUse}, #{subUse},
 				#{subTotAmt}, #{oPrice}, #{orderNo} )
+	
+	</insert>
+	
+	<select id='checkSalSeq' parameterType='map' resultType='Integer'>
+	
+		select 
+			top 1
+			salSeq
+		from 
+			tmtktDetail
+		where
+			salDate = #{salDate}
+		order by 1 desc
+	
+	</select>
+	
+	<select id='checkTmtktDetailOrderNo' parameterType='map' resultType='Integer'>
+	
+		select 
+			top 1
+			OrderNo
+		from 
+			TmtktDetail
+		where
+			salDate = #{salDate}
+		order by 1 desc
+	
+	</select>
+	
+	<select id='checkTmtktDetailTcode' parameterType='map' resultType='String'>
+	
+		select 
+			top 1
+			tCode
+		from 
+			TmtktDetail
+		where
+			salDate = #{salDate}
+			and salPos = #{pos}
+		order by 1 desc
+	
+	</select>
+	
+	<insert id='insertTmtktDetail' parameterType='map'>
+	
+		insert into TmtktDetail( comId, salDate, salPos, salSeq, tCode, tkdtSeq, tkdtTot, trDate,
+							trTime, chCode, itemCode, pCode, aUnit, aNum, aAmt, aPayment, groupSel, rePrint, 
+							aReturn, rtnSalDt, rtnDate, rtnTime, rtnCh, rtnPos, servTrans, transDate, transTime,
+							rtnSvrSend, bsend, btReturn, bt_Orderno, refundrs, agreeNo, rDate, uDate, 
+							lockNum, orderNo, subUse, baseUnit, tNum )
+		values ( #{comId}, #{salDate}, #{salPos}, #{salSeq}, #{tCode}, #{tkdtSeq}, #{tkdtTot}, #{trDate},
+				#{trTime}, #{chCode}, #{itemCode}, #{pCode}, #{aUnit}, #{aNum}, #{aAmt}, #{aPayment}, #{groupSel}, #{rePrint},
+				#{aReturn}, #{rtnSalDt}, #{rtnDate}, #{rtnTime}, #{rtnCh}, #{rtnPos}, #{servTrans}, #{transDate}, #{transTime},
+				#{rtnSvrSend}, #{bsend}, #{btReturn}, #{bt_Orderno}, #{refundrs}, #{agreeNo}, #{rDate}, #{uDate}, 
+				#{lockNum}, #{orderNo}, #{subUse}, #{baseUnit}, #{tNum} )
 	
 	</insert>
 </mapper>

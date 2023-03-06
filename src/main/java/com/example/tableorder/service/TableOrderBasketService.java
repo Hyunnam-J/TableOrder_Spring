@@ -23,20 +23,21 @@ public class TableOrderBasketService {
 		
 		int tMenuSeq = 1;
 		
-		try {
+		if(tableOrderBasketMapper.checkTMenuSeq(tNum)==null) {
+			tMenuSeq = 1;
+		}else {
 			tMenuSeq = tableOrderBasketMapper.checkTMenuSeq(tNum) + 1;
-		}catch (Exception e) {
-			
 		}
 		
 		String itemNo = "0";
 		
 		String orderNo = "0001";
-		try {
-			int tempOrderNo = tableOrderBasketMapper.checkTableDetailOrderNo()+1;
-			orderNo = String.format("%04d", tempOrderNo);
-		}catch (Exception e) {
-			
+		
+		if(tableOrderBasketMapper.checkTableDetailOrderNo()==null) {
+			orderNo = "0001";
+		}else {
+			int temp = tableOrderBasketMapper.checkTableDetailOrderNo()+1;
+			orderNo = String.format("%04d", temp);
 		}
 		
 		int result = 0;
@@ -76,42 +77,30 @@ public class TableOrderBasketService {
 		
 		int salSeq = 1;
 		
-		try {
-			int temp = tableOrderBasketMapper.checkSalSeq(salDate);
-			salSeq = temp + 1;
-		} catch (Exception e) {
-
+		if(tableOrderBasketMapper.checkSalSeq(salDate)==null) {
+			salSeq = 1;
+		}else {
+			salSeq = tableOrderBasketMapper.checkSalSeq(salDate)+1;
 		}
 		
 		LocalTime nowTime = LocalTime.now();
 		String trTime = nowTime.getHour()+nowTime.getMinute()+nowTime.getSecond()+"";
 		
-		
-		
-		
 		//메뉴 종목 수별로 들어가야 된다
-		String tCode = "1";
-		
-		try {
-			String temp = tableOrderBasketMapper.checkTmtktDetailTcode(salDate, basketList.get(0).getPos());
-			tCode = Integer.parseInt(temp) + 1 + "";
-		} catch (Exception e) {
-			tCode = salDate.substring(2) + basketList.get(0).getPos() + String.format("%06d", salSeq);
+		String settingTcode = "";
+		if(tableOrderBasketMapper.checkTmtktDetailTcode(salDate, basketList.get(0).getPos())==null) {
+			settingTcode = salDate.substring(2) + basketList.get(0).getPos() + "000000"; 
+		}else {
+			settingTcode = tableOrderBasketMapper.checkTmtktDetailTcode(salDate, basketList.get(0).getPos());
 		}
 		
-		
-		
-		
-		
-		
-		
-		
 		String orderNo = "0001";
-		try {
-			int tempOrderNo = tableOrderBasketMapper.checkTmtktDetailOrderNo(salDate)+1;
-			orderNo = String.format("%04d", tempOrderNo);
-		}catch (Exception e) {
-			
+		
+		if(tableOrderBasketMapper.checkTmtktDetailOrderNo(salDate)==null) {
+			orderNo = "0001";
+		}else {
+			int temp = tableOrderBasketMapper.checkTmtktDetailOrderNo(salDate)+1;
+			orderNo = String.format("%04d", temp);
 		}
 		
 		String chCode = "SYSTEM";
@@ -138,14 +127,13 @@ public class TableOrderBasketService {
 		Date uDate = null;
 		String lockNum = "N";
 		
-		
 		for(int i=0; i<basketList.size(); i++) {
 			tableOrderBasketMapper.insertTmtktDetail(
 					basketList.get(i).getComId(), 
 					salDate, 
 					basketList.get(i).getPos(), 
-					salSeq, 
-					tCode, 
+					salSeq,
+					Long.parseLong(settingTcode)+i+1+"",
 					i+1, 
 					basketList.size(), 
 					salDate, 

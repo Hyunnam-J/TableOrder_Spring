@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TableOrderBasketMapper {
 
-	public int checkTMenuSeq(int tNum);
-	public int checkTableDetailOrderNo();
+	public Integer checkTMenuSeq(int tNum);
+	public Integer checkTableDetailOrderNo();
 	public int order(
 			
 			@Param("tNum") int tNum,
@@ -45,9 +45,9 @@ public interface TableOrderBasketMapper {
 	
 	
 	
-	public int checkSalSeq(@Param("salDate") String salDate);
+	public Integer checkSalSeq(@Param("salDate") String salDate);
 	
-	public int checkTmtktDetailOrderNo(@Param("salDate") String salDate);
+	public Integer checkTmtktDetailOrderNo(@Param("salDate") String salDate);
 	
 	public String checkTmtktDetailTcode(@Param("salDate") String salDate, @Param("pos") String pos);
 	

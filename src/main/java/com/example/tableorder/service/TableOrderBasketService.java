@@ -85,7 +85,10 @@ public class TableOrderBasketService {
 		}
 		
 		LocalTime nowTime = LocalTime.now();
-		String trTime = nowTime.getHour()+nowTime.getMinute()+nowTime.getSecond()+"";
+		String hours = String.format("%02d", nowTime.getHour());
+		String minutes = String.format("%02d", nowTime.getMinute());
+		String seconds = String.format("%02d", nowTime.getSecond());
+		String trTime = hours + minutes + seconds;
 		
 		//메뉴 종목 수별로 들어가야 된다
 		String settingTcode = "";
@@ -193,10 +196,10 @@ public class TableOrderBasketService {
 		String tidNo = null;
 		String cashCustomerGbn = "0";
 		
-		int totamt=0;
+		int totAmt=0;	// == cashAmt, payAmt
 		
 		for(int i=0; i<basketList.size(); i++) {
-			totamt = basketList.get(i).getuPrice() * basketList.get(i).getQuantity();
+			totAmt += basketList.get(i).getuPrice() * basketList.get(i).getQuantity();
 		}
 		
 		tableOrderBasketMapper.insertTmtktHdr(
@@ -208,12 +211,12 @@ public class TableOrderBasketService {
 				trTime, 
 				chCode,
 				basketList.size(),
-				totamt,
+				totAmt,
 				aReturn,
 				cashGbn,
 				cashRcp,
 				cashRcpApp,
-				totamt,
+				totAmt,
 				cashInputNo,
 				rtnSalDt,
 				rtnDate,
@@ -232,5 +235,77 @@ public class TableOrderBasketService {
 				);
 		
 		/*********************************************************************************************************************/
+		/**************************************************insert tmtktPay****************************************************/
+		
+		int paySeq = 1;
+		
+		String cardNo = "";
+		String cardGigan = "";
+		
+		String appNo = "";
+		
+		String halbu = "0";
+		
+		String maeIpCd = "";
+		String maeIpName = "";
+		
+		String taxCode = "";
+		String oidNo = "";
+		
+		int pSeq = 0;
+		String csrType = null;
+		
+		int aNum = 0;	//위 두 테이블의 aNum과는 다르다고 하는데 그냥 쓸 용도를 내가 정하면 될 듯. 일단 기존 디비에 삽입된 기본 값은 0.
+		
+		String catId = "";
+		
+		
+		tableOrderBasketMapper.insertTmtktPay(
+				
+				basketList.get(0).getComId(),
+				salDate,
+				basketList.get(0).getPos(),
+				salSeq,
+				paySeq,
+				salDate,
+				trTime,
+				chCode,
+				aPayment,
+				totAmt,
+				cardNo,
+				cardGigan,
+				appNo,
+				halbu,
+				maeIpCd,
+				maeIpName,
+				aReturn,
+				rtnSalDt,
+				rtnDate,
+				rtnTime,
+				rtnCh,
+				rtnPos,
+				servTrans,
+				rtnSvrSend,
+				transDate,
+				transTime,
+				tidNo,
+				taxCode,
+				oidNo,
+				pSeq,
+				rDate,
+				uDate,
+				cashGbn,
+				cashRcpApp,
+				totAmt,
+				cashInputNo,
+				csrType,
+				aNum,
+				catId,
+				orderNo
+				
+				);
+		
+		/*********************************************************************************************************************/
+		
 	}	//pay
 }	//class

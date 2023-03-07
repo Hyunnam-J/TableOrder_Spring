@@ -108,4 +108,21 @@
 				#{tidNo}, #{cashCustomerGbn}, #{comId}, #{rDate}, #{uDate} ) 
 	
 	</insert>
+	
+	<insert id='insertTmtktPay' parameterType='map'>
+	
+		insert into TmtktPay( comId, salDate, salPos, salSeq, paySeq, trDate, trTime, chCode, 
+							aPayment, payAmt, cardNo, cardGigan, appNo, halbu, maeIpCd, maeIpName,
+							aReturn, rtnSalDt, rtnDate, rtnTime, rtnCh, rtnPos, servTrans, rtnSvrSend, transDate, transTime, 
+							tidNo, taxCode, oidNo, pSeq, rDate, uDate, cashGbn, cashRcpApp, cashAmt, cashInputNo,
+							csrType, aNum, catId, orderNo )
+							
+							
+		values ( #{comId}, #{salDate}, #{salPos}, #{salSeq}, #{paySeq}, #{trDate}, #{trTime}, #{chCode}, 
+				#{aPayment}, #{payAmt}, #{cardNo}, #{cardGigan}, #{appNo}, #{halbu}, #{maeIpCd}, #{maeIpName},
+				#{aReturn}, #{rtnSalDt}, #{rtnDate}, #{rtnTime}, #{rtnCh}, #{rtnPos}, #{servTrans}, #{rtnSvrSend}, #{transDate}, #{transTime},
+				#{tidNo}, #{taxCode}, #{oidNo}, #{pSeq}, #{rDate}, #{uDate}, #{cashGbn}, #{cashRcpApp}, #{cashAmt}, #{cashInputNo},
+				#{csrType}, #{aNum}, #{catId}, #{orderNo} ) 
+	
+	</insert>
 </mapper>

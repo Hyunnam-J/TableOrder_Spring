@@ -133,4 +133,49 @@ public interface TableOrderBasketMapper {
 			@Param("uDate") Date uDate
 			
 			);
+	
+	public int insertTmtktPay(
+			
+			@Param("comId") String comId,
+			@Param("salDate") String salDate,
+			@Param("salPos") String salPos,
+			@Param("salSeq") int salSeq,
+			@Param("paySeq") int paySeq,
+			@Param("trDate") String trDate,
+			@Param("trTime") String trTime,
+			@Param("chCode") String chCode,
+			@Param("aPayment") String aPayment,
+			@Param("payAmt") int payAmt,
+			@Param("cardNo") String cardNo,
+			@Param("cardGigan") String cardGigan,
+			@Param("appNo") String appNo,
+			@Param("halbu") String halbu,
+			@Param("maeIpCd") String maeIpCd,
+			@Param("maeIpName") String maeIpName,
+			@Param("aReturn") String aReturn,
+			@Param("rtnSalDt") String rtnSalDt,
+			@Param("rtnDate") String rtnDate,
+			@Param("rtnTime") String rtnTime,
+			@Param("rtnCh") String rtnCh,
+			@Param("rtnPos") String rtnPos,
+			@Param("servTrans") String servTrans,
+			@Param("rtnSvrSend") String rtnSvrSend,
+			@Param("transDate") String transDate,
+			@Param("transTime") String transTime,
+			@Param("tidNo") String tidNo,
+			@Param("taxCode") String taxCode,
+			@Param("oidNo") String oidNo,
+			@Param("pSeq") int pSeq,
+			@Param("rDate") Date rDate,
+			@Param("uDate") Date uDate,
+			@Param("cashGbn") String cashGbn,
+			@Param("cashRcpApp") String cashRcpApp,
+			@Param("cashAmt") int cashAmt,
+			@Param("cashInputNo") String cashInputNo,
+			@Param("csrType") String csrType,
+			@Param("aNum") int aNum,
+			@Param("catId") String catId,
+			@Param("orderNo") String orderNo
+			
+			);
 }

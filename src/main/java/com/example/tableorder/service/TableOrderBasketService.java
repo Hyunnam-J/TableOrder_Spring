@@ -72,6 +72,7 @@ public class TableOrderBasketService {
 	
 	public void pay(List<BasketVO> basketList, int tNum) {
 		
+		/*************************************************insert tmtktdeatil**************************************************/
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
 		String salDate = sdf.format(new Date());
 		
@@ -172,5 +173,64 @@ public class TableOrderBasketService {
 					tNum
 					);
 		}	//for(int i=0; i<basketList.size(); i++) 
+		/*********************************************************************************************************************/
+		
+		/**************************************************insert tmtkthdr****************************************************/
+		
+		String cashGbn = "0";
+		String cashRcp = null;
+		String cashRcpApp = null;
+		String cashInputNo = null;
+		
+		rtnSalDt = null;
+		rtnDate = null;
+		rtnTime = null;
+		rtnCh = null;
+		rtnPos = null;
+		transDate = null;
+		transTime = null;
+		
+		String tidNo = null;
+		String cashCustomerGbn = "0";
+		
+		int totamt=0;
+		
+		for(int i=0; i<basketList.size(); i++) {
+			totamt = basketList.get(i).getuPrice() * basketList.get(i).getQuantity();
+		}
+		
+		tableOrderBasketMapper.insertTmtktHdr(
+				
+				salDate,
+				basketList.get(0).getPos(),
+				salSeq,
+				salDate,
+				trTime, 
+				chCode,
+				basketList.size(),
+				totamt,
+				aReturn,
+				cashGbn,
+				cashRcp,
+				cashRcpApp,
+				totamt,
+				cashInputNo,
+				rtnSalDt,
+				rtnDate,
+				rtnTime,
+				rtnCh,
+				rtnPos,
+				servTrans,
+				rtnSvrSend,
+				transDate,
+				transTime,
+				tidNo,
+				cashCustomerGbn,
+				basketList.get(0).getComId(),
+				rDate,
+				uDate
+				);
+		
+		/*********************************************************************************************************************/
 	}	//pay
 }	//class

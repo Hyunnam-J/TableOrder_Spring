@@ -94,4 +94,18 @@
 				#{lockNum}, #{orderNo}, #{subUse}, #{baseUnit}, #{tNum} )
 	
 	</insert>
+	
+	<insert id='insertTmtktHdr' parameterType='map'>
+	
+		insert into TmtktHDR( salDate, salPos, salSeq, trDate, trTime, chCode, 
+							totCnt, totAmt,	aReturn, cashGbn, cashRcp, cashRcpApp, cashAmt, cashInputNo,
+							rtnSalDt, rtnDate, rtnTime, rtnCh, rtnPos, servTrans, rtnSvrSend, transDate, transTime,
+							tidNo, cashCustomerGbn, comId, rDate, uDate ) 
+							
+		values ( #{salDate}, #{salPos}, #{salSeq}, #{trDate}, #{trTime}, #{chCode}, 
+				#{totCnt}, #{totAmt}, #{aReturn}, #{cashGbn}, #{cashRcp}, #{cashRcpApp}, #{cashAmt}, #{cashInputNo},
+				#{rtnSalDt}, #{rtnDate}, #{rtnTime}, #{rtnCh}, #{rtnPos}, #{servTrans}, #{rtnSvrSend}, #{transDate}, #{transTime},
+				#{tidNo}, #{cashCustomerGbn}, #{comId}, #{rDate}, #{uDate} ) 
+	
+	</insert>
 </mapper>

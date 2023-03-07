@@ -96,4 +96,41 @@ public interface TableOrderBasketMapper {
 			@Param("tNum") int tNum
 			
 			);
+	
+	
+	
+	
+	
+	public int insertTmtktHdr(
+			
+			@Param("salDate") String salDate,
+			@Param("salPos") String salPos,
+			@Param("salSeq") int salSeq,
+			@Param("trDate") String trDate,
+			@Param("trTime") String trTime,
+			@Param("chCode") String chCode,
+			@Param("totCnt") int totCnt,
+			@Param("totAmt") int totAmt,
+			@Param("aReturn") String aReturn,
+			@Param("cashGbn") String cashGbn,
+			@Param("cashRcp") String cashRcp,
+			@Param("cashRcpApp") String cashRcpApp,
+			@Param("cashAmt") int cashAmt,
+			@Param("cashInputNo") String cashInputNo,
+			@Param("rtnSalDt") String rtnSalDt,
+			@Param("rtnDate") String rtnDate,
+			@Param("rtnTime") String rtnTime,
+			@Param("rtnCh") String rtnCh,
+			@Param("rtnPos") String rtnPos,
+			@Param("servTrans") String servTrans,
+			@Param("rtnSvrSend") String rtnSvrSend,
+			@Param("transDate") String transDate,
+			@Param("transTime") String transTime,
+			@Param("tidNo") String tidNo,
+			@Param("cashCustomerGbn") String cashCustomerGbn,
+			@Param("comId") String comId,
+			@Param("rDate") Date rDate,
+			@Param("uDate") Date uDate
+			
+			);
 }
